@@ -1,0 +1,77 @@
+Configs: {
+	HellevatorMusicConfig: {
+		DisplayName: Hellevator Music Config
+
+		Headers: {
+			Main: Main
+			Extras: Extras
+		}
+
+		EnableMod: {
+			Label: Enable Mod
+			Tooltip:
+				'''
+				Toggles mod's functions.
+				For if you don't want to go through the process of disabling the mod and reloading.
+				'''
+		}
+
+		RandomSongs: {
+			Label: Toggle Random Songs
+			Tooltip:
+				'''
+				For when you want some randomess.
+				Chooses a random song every fall.
+				Will override Music Select if on.
+				'''
+		}
+
+		MusicSelect: {
+			Label: Music Select
+			Tooltip:
+				'''
+				For when you've had enough randomess.
+				Any selection is overriden when "Toggle Random Songs" is on.
+
+				(1) Elevator Music - Kevin Macleod
+				(2) Elevator - David O'Brian
+				(3) Garota De Impanema - Antonio Carlos Jobim
+				(4) Left Bank Two - Wayne Hill
+				(5) "Refreshing Elevator Music" on YT - Chris Rae
+				(6) Trophy Gallery - Nobuo Uematsu [Super Smash Bros. Brawl]
+				(7) Welcome to Booster Tower - Yoko Shimomura [Super Mario RPG]
+				'''
+		}
+
+		timeBeforePlay: {
+			Label: Time Before Music Plays
+			Tooltip:
+				'''
+				Set the time before music plays.
+
+				Every in-/decrement is 1 second.
+				Default is 300 frames (5 seconds).
+				Maximum is 900 frames (15 seconds).
+				Minimum is 0 frames (instantly / why?).
+				'''
+		}
+
+		ElevatorChime: {
+			Label: Toggle Elevator Chime
+			Tooltip: Toggles an elevator chime to sound when you reach Hell.
+		}
+
+		RareElevatorIntercom: {
+			Label: Toggle Intercom Announcements
+			Tooltip:
+				'''
+				Toggles a rare, random chance for an intercom announcement to interrupt your fall.
+
+				You may be asking: "Why?"
+				Why not.
+				"But it doesn't makes sense"
+				Bingo.
+				'''
+		}
+	}
+}
