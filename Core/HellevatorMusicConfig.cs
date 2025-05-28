@@ -22,7 +22,7 @@ namespace HellevatorMusic.Core
 
         [BackgroundColor(170, 110, 230, 1)]
         [DrawTicks]
-        [OptionStrings(["1", "2", "3", "4", "5", "6", "7"])]
+        [OptionStrings(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18"])]
         [DefaultValue("1")]
         public string MusicSelect;
 
@@ -33,6 +33,18 @@ namespace HellevatorMusic.Core
         [DefaultValue(300)]
         public int timeBeforePlay;
 
+        [BackgroundColor(170, 110, 230, 1)]
+        [DrawTicks]
+        [OptionStrings(["1", "2", "3"])]
+        [DefaultValue("3")]
+        public string FallVelocityThreshold;
+
+        [BackgroundColor(170, 110, 230, 1)]
+        [Range(0f, 7f)]
+        [Increment(0.1f)]
+        [Slider]
+        [DefaultValue(0.5f)]
+        public float HorizontalLeniency;
 
 
         [Header("Extras")]
@@ -43,6 +55,32 @@ namespace HellevatorMusic.Core
 
         [BackgroundColor(170, 110, 230, 1)]
         [DefaultValue(true)]
-        public bool RareElevatorIntercom;
+        public bool ElevatorIntercom;
+
+        [BackgroundColor(170, 110, 230, 1)]
+        [Range(1, 20)]
+        [Increment(1)]
+        [Slider]
+        [DefaultValue(20)]
+        public int IntercomChance;
+
+        [BackgroundColor(170, 110, 230, 1)]
+        [DefaultValue(true)]
+        public bool Jumpscare;
+
+
+        [Header("Debug")]
+
+        [BackgroundColor(170, 110, 230, 1)]
+        [DefaultValue(false)]
+        public bool FallTimerToggle;
+
+        [BackgroundColor(170, 110, 230, 1)]
+        [DefaultValue(false)]
+        public bool PlayerYToggle;
+
+        [BackgroundColor(170, 110, 230, 1)]
+        [DefaultValue(false)]
+        public bool PlayerXToggle;
     }
 }
