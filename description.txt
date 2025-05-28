@@ -4,3 +4,22 @@ There is nothing to see here.
 Maybe except that you can check out the config to change stuff.
 Other than that? Literally nothing else.
 Go fall in a hole (or hellevator; enjoy the music).
+
+Okay I lied, here's a changelog in-game (there's also one in the steam page too y'know...)
+
+-----Changelog-----
+
+__1.0.0 (5/24/25)__
+Initial release!
+
+__1.0.1 (5/25/25)__
+- Bumped the minimum time until music plays to be 60 frames (0 frames bugged the music/made it play all the time).
+- Music when falling is only valid while underground; below the surface, sky and space, above hell.
+- Fixed some wording in the config option tooltips.
+
+__1.1.0 (5/28/25)__
+- Added 11 new songs (many good reccomendations/songs I feel ashamaed for missing out on).
+- Added more configurability options, including horizontal movement detection for premature music activiation.
+- Corrected some tooltips.
+
+For more detailed changes, check the github repo linked on the mod page.

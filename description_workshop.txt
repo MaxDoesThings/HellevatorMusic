@@ -10,4 +10,10 @@ Happy falling y'all. Don't forget to wear a lucky horseshoe.
 
 
 [h3] Wait! I have a song I think would fit well! [/h3]
-Feel free to post any song recommendations in the comments. I'll be sure to check them out and consider adding them to the mod. :luv:
+Feel free to post any song recommendations in the comments. I'll be sure to check them out and consider adding them to the mod. :D
+
+[h3] Music Used [/h3]
+[url=https://youtube.com/playlist?list=PLUJDWjYDf2lOHVzYFW__oo2mLehSPJhTR&si=cmOP9oIQvBaHwqde] Ze Youtube playlist. [/url]
+
+[h3] Github Repository [/h3]
+Check out the source code [url=https://github.com/MaxDoesThings/HellevatorMusic] here. [/url]
