@@ -3,8 +3,9 @@ Configs: {
 		DisplayName: Hellevator Music Config
 
 		Headers: {
-			Main: Main
-			Extras: Extras
+			Main: "[i:4766] Main Config"
+			Extras: "[i:4954] Extras"
+			Debug: "[i:3611] Debug"
 		}
 
 		EnableMod: {
@@ -33,13 +34,16 @@ Configs: {
 				For when you've had enough randomess.
 				Any selection is overriden when "Toggle Random Songs" is on.
 
-				(1) Elevator Music - Kevin Macleod
-				(2) Elevator - David O'Brian
-				(3) Garota De Impanema - Antonio Carlos Jobim
-				(4) Left Bank Two - Wayne Hill
-				(5) "Refreshing Elevator Music" on YT - Chris Rae
-				(6) Trophy Gallery - Nobuo Uematsu [Super Smash Bros. Brawl]
-				(7) Welcome to Booster Tower - Yoko Shimomura [Super Mario RPG]
+				Yes, it's very cluttered. I plan to add a way to form a playlist soon(tm)
+				(1) Local Forecast - Kevin Macleod | (2) Elevator - David O'Brian
+				(3) Garota De Impanema - Antonio Carlos Jobim | (4) Left Bank Two - Wayne Hill
+				(5) "Refreshing Elevator Music" on YT - Chris Rae | (6) Trophy Gallery - Nobuo Uematsu
+				(7) Welcome to Booster Tower - Yoko Shimomura | (8) wavedash.ppt - Lena Raine
+				(9) Hotel - Toby Fox | (10) Infrustration - Neko Tako
+				(11) Layer Cake - Shoji Meguro | (12) Flower Shop - Cazok
+				(13) Elevatorstuck - Clark "Plazmataz" Powell | (14) Mall of the Dead - Daniel Bernstein, Guy Whitmore
+				(15) Wii Shop Channel - Kazumi Totoka | (16) Once Upon A Time - Toby Fox
+				(17) Free Fallin' - Tom Petty | (18) Dream On - Aerosmith
 				'''
 		}
 
@@ -52,7 +56,28 @@ Configs: {
 				Every in-/decrement is 1 second.
 				Default is 300 frames (5 seconds).
 				Maximum is 900 frames (15 seconds).
-				Minimum is 0 frames (instantly / why?).
+				Minimum is 60 frames (1 second).
+				'''
+		}
+
+		FallVelocityThreshold: {
+			Label: Fall Velocity Threshold
+			Tooltip:
+				'''
+				Adjust how fast you need to be falling in order for music to start playing.
+
+				1 - Wing gliding fall speed.
+				2 - Drill Containment Unit descend speed.
+				3 - Normal/Slime Mount fall speed.
+				'''
+		}
+
+		HorizontalLeniency: {
+			Label: Horizontal Movement Leniency
+			Tooltip:
+				'''
+				Adjust how sensitive moving horizontally is before music resets.
+				Set to 7 to "disable" it (will still reset when using a dashing item).
 				'''
 		}
 
@@ -61,7 +86,7 @@ Configs: {
 			Tooltip: Toggles an elevator chime to sound when you reach Hell.
 		}
 
-		RareElevatorIntercom: {
+		ElevatorIntercom: {
 			Label: Toggle Intercom Announcements
 			Tooltip:
 				'''
@@ -72,6 +97,39 @@ Configs: {
 				"But it doesn't makes sense"
 				Bingo.
 				'''
+		}
+
+		IntercomChance: {
+			Label: Intercom Chance
+			Tooltip:
+				'''
+				Adjust the chances for an intercom announcement to play.
+				With the chance of: 1/<set number>
+				'''
+		}
+
+		Jumpscare: {
+			Label: Jumpscare
+			Tooltip:
+				'''
+				Boo.
+				(Does nothing... for now.)
+				'''
+		}
+
+		FallTimerToggle: {
+			Label: Fall Timer Toggle
+			Tooltip: Toggles the fallTimer to be logged in chat.
+		}
+
+		PlayerYToggle: {
+			Label: Player Y Toggle
+			Tooltip: Toggles the Player's Y velocity to be logged in chat.
+		}
+
+		PlayerXToggle: {
+			Label: Player X Toggle
+			Tooltip: Toggles the Player's X velocity to be logged in chat.
 		}
 	}
 }
