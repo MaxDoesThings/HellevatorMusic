@@ -22,4 +22,8 @@ __1.1.0 (5/28/25)__
 - Added more configurability options, including horizontal movement detection for premature music activiation.
 - Corrected some tooltips.
 
+__1.1.1 (6/15/25)__
+- Just made the mod client-sided, as it wasn't already.
+
+
 For more detailed changes, check the github repo linked on the mod page.
