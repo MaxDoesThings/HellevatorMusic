@@ -12,7 +12,7 @@ namespace HellevatorMusic.Content.SceneEffects
             get
             {
                 var p = Main.LocalPlayer.GetModPlayer<HellevatorMusicModPlayer>();
-                return MusicLoader.GetMusicSlot(Mod, "Assets/Music/tune_" + p.GetCurrentMusic());
+                return MusicLoader.GetMusicSlot(Mod, "Assets/Music/" + p.GetCurrentMusic());
             }
         }
         public override SceneEffectPriority Priority => SceneEffectPriority.BiomeHigh;
@@ -31,7 +31,7 @@ namespace HellevatorMusic.Content.SceneEffects
             get
             {
                 var p = Main.LocalPlayer.GetModPlayer<HellevatorMusicModPlayer>();
-                return MusicLoader.GetMusicSlot(Mod, "Assets/Music/intercom_" + p.selectedIntercomTrack);
+                return MusicLoader.GetMusicSlot(Mod, "Assets/Sounds/intercom_" + p.selectedIntercomTrack);
             }
         }
         public override SceneEffectPriority Priority => SceneEffectPriority.BiomeHigh;
@@ -39,7 +39,8 @@ namespace HellevatorMusic.Content.SceneEffects
         {
             var p = player.GetModPlayer<HellevatorMusicModPlayer>();
             return p.IsIntercomActive() && p.IsInValidZone()
-                && HellevatorMusicConfig.Instance.EnableMod;
+                && HellevatorMusicConfig.Instance.EnableMod
+                && !HellevatorMusicConfig.Instance.snakeEaterOnly;
         }
     }
 }

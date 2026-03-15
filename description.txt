@@ -25,5 +25,16 @@ __1.1.0 (5/28/25)__
 __1.1.1 (6/15/25)__
 - Just made the mod client-sided, as it wasn't already.
 
+__1.2.0 (3/14/26)__
+Been a while since I updated this!
+
+- Added many new songs (too lazy to count) totalling to 41 total!
+- Elevator-ified all music (aside from one).
+- Revamped the music selection config.
+- Moved around the config and updated various things in the localization file.
+- Un-Hellevator'd your Hellevator
+- What a thrill...
+- No more jumpscare :< (lazy)
+
 
 For more detailed changes, check the github repo linked on the mod page.

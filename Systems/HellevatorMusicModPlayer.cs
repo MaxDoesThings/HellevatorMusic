@@ -1,29 +1,25 @@
 using System;
+using System.Linq;
 using HellevatorMusic.Core;
 using Terraria;
 using Terraria.Audio;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace HellevatorMusic.Systems
 {
 	public class HellevatorMusicModPlayer : ModPlayer
 	{
-        private string chosenMusic = "1";
+        private MusicSelection chosenMusic = MusicSelection.Elevator;
         private bool hasSelectedRandom = false;
 
-		private int fallTimer = 0;
+		private int timer = 0;
 		private int musicThreshold => HellevatorMusicConfig.Instance.timeBeforePlay;
 
         private int intercomTimer = 0;
         private const int intercomLength = 1500;
 
-        private int jumpscareTimer = 0;
-        private const int jumpscareLength = 180;
-
         private int intercomChance => HellevatorMusicConfig.Instance.IntercomChance;
         private static readonly int exclusiveChance = 5;
-        private static readonly int jumpscareChance = 40;
 
         public static readonly SoundStyle elevatorChime = new SoundStyle("HellevatorMusic/Assets/Sounds/elevator_chime");
 
@@ -32,15 +28,18 @@ namespace HellevatorMusic.Systems
         private bool hasElevatorChimed = false;
         private bool hasIntercomRolled = false;
         private bool playingIntercom = false;
-        private bool hasJumpscareRolled = false;
-        private bool playingJumpscare = false;
 
-        private bool isYFast()
+        private bool IsYFastFall()
         {
             return Player.velocity.Y > GetFallVelocityThreshold();
         }
 
-        private bool isMovingX()
+        private bool IsYFastRise()
+        {
+            return Player.velocity.Y < -5f;
+        }
+
+        private bool IsMovingX()
         {
             float xMoveThreshold = HellevatorMusicConfig.Instance.HorizontalLeniency;
             return Math.Abs(Player.velocity.X) >= xMoveThreshold && xMoveThreshold > 0f;
@@ -48,7 +47,7 @@ namespace HellevatorMusic.Systems
 
         public bool IsFalling()
         {
-            return fallTimer >= musicThreshold;
+            return timer >= musicThreshold;
         }
 
         public bool IsInValidZone()
@@ -71,7 +70,18 @@ namespace HellevatorMusic.Systems
 
         public string GetCurrentMusic()
         {
-            return chosenMusic;
+            return chosenMusic.ToString();
+        }
+
+        private void SelectRandomTrack()
+        {
+            var playlist = HellevatorMusicConfig.Instance.MusicPlaylist;
+            var enabledTracks = playlist.Where(x => x.Value).Select(x => x.Key).ToList();
+
+            if (enabledTracks.Count > 0)
+            {
+                chosenMusic = enabledTracks[Main.rand.Next(enabledTracks.Count)];
+            }
         }
 
         private void StartIntercom()
@@ -101,28 +111,48 @@ namespace HellevatorMusic.Systems
 
         private void FallReset()
         {
-            fallTimer = 0;
+            timer = 0;
             hasIntercomRolled = false;
             hasSelectedRandom = false;
-            hasJumpscareRolled = false;
         }
 
         public override void PostUpdate()
-        {    
+        {
             if (HellevatorMusicConfig.Instance.EnableMod)
             {
-                if (isYFast() && !isMovingX()) // fallTimer ticking.
+                if (IsYFastFall() && !IsMovingX()) // timer ticking.
                 {
-                    fallTimer++;
+                    timer++;
 
                     if (HellevatorMusicConfig.Instance.RandomSongs && !hasSelectedRandom) // Music selection logic.
                     {
-                        chosenMusic = Main.rand.Next(1, 19).ToString();
+                        SelectRandomTrack();
                         hasSelectedRandom = true;
                     }
                     else if (!HellevatorMusicConfig.Instance.RandomSongs)
                     {
                         chosenMusic = HellevatorMusicConfig.Instance.MusicSelect;
+                    }
+                }
+                else if (IsYFastRise() && !IsMovingX())
+                {
+                    timer++;
+
+                    if (HellevatorMusicConfig.Instance.unHellevator && HellevatorMusicConfig.Instance.snakeEaterOnly)
+                    {
+                        chosenMusic = MusicSelection.SnakeEater;
+                    }
+                    else if (HellevatorMusicConfig.Instance.unHellevator && !HellevatorMusicConfig.Instance.snakeEaterOnly)
+                    {
+                        if (HellevatorMusicConfig.Instance.RandomSongs && !hasSelectedRandom) // stolen from above...
+                        {
+                            SelectRandomTrack();
+                            hasSelectedRandom = true;
+                        }
+                        else if (!HellevatorMusicConfig.Instance.RandomSongs)
+                        {
+                            chosenMusic = HellevatorMusicConfig.Instance.MusicSelect;
+                        }
                     }
                 }
                 else
@@ -132,7 +162,7 @@ namespace HellevatorMusic.Systems
 
                 if (HellevatorMusicConfig.Instance.ElevatorIntercom) // Intercom checks.
                 {
-                    if (!hasIntercomRolled && fallTimer >= musicThreshold + 300 && !playingIntercom)
+                    if (!hasIntercomRolled && timer >= musicThreshold + 300 && !playingIntercom)
                     {
                         hasIntercomRolled = true;
 
@@ -166,34 +196,6 @@ namespace HellevatorMusic.Systems
                         hasElevatorChimed = false;
                     }
                 }
-
-                /*if (HellevatorMusicConfig.Instance.Jumpscare) // Jumpscare checks (hehe, boo).
-                {
-                    if (!hasJumpscareRolled && hasIntercomRolled && !playingIntercom)
-                    {
-                        hasJumpscareRolled = true;
-
-                        if (Main.rand.NextBool(jumpscareChance))
-                        {
-                            NPC.SpawnOnPlayer(Player.whoAmI, NPCID.DungeonGuardian);
-                            Main.NewText($"FALL FOR YOUR LIFE!", 255, 0, 0); 
-                            playingJumpscare = true;
-                            jumpscareTimer = 0;
-                        }
-                    }
-
-                    if (playingJumpscare)
-                    {
-                        jumpscareTimer++;
-
-                        if (jumpscareTimer >= jumpscareLength)
-                        {
-                            Main.NewText($"hehe gotcha.", 0, 255, 255);
-                            playingJumpscare = false;
-                            jumpscareTimer = 0;
-                        }
-                    }
-                }*/
             }
             else // Good ol' safety reset.
             {
@@ -203,7 +205,7 @@ namespace HellevatorMusic.Systems
             // Debug Corner.
             if (HellevatorMusicConfig.Instance.FallTimerToggle) // fallTimer toggle.
             {
-                Main.NewText("Fall Timer: " + fallTimer);
+                Main.NewText("Fall Timer: " + timer);
             }
 
             if (HellevatorMusicConfig.Instance.PlayerYToggle)

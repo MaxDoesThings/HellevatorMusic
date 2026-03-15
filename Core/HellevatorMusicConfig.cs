@@ -1,4 +1,8 @@
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Config;
 
@@ -21,10 +25,65 @@ namespace HellevatorMusic.Core
         public bool RandomSongs;
 
         [BackgroundColor(170, 110, 230, 1)]
-        [DrawTicks]
-        [OptionStrings(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18"])]
-        [DefaultValue("1")]
-        public string MusicSelect;
+        [DefaultValue(MusicSelection.Elevator)]
+        public MusicSelection MusicSelect;
+
+        [BackgroundColor(170, 110, 230, 1)]
+        public Dictionary<MusicSelection, bool> MusicPlaylist = new Dictionary<MusicSelection, bool>()
+        {
+            { MusicSelection.ACupOfLiberTea, true },
+            { MusicSelection.AzureMemory, true },
+            { MusicSelection.CanYouReallyCallThisAHotelIDidntReceiveAMintOnMyPillowOrAnything, true },
+            { MusicSelection.DreamOn, true },
+            { MusicSelection.Elevator, true },
+            { MusicSelection.Elevatorstuck, true },
+            { MusicSelection.FlowerShop, true },
+            { MusicSelection.FreeBird, true },
+            { MusicSelection.FreeFallin, true },
+            { MusicSelection.FridayNight, true },
+            { MusicSelection.GarotaDeImpanema, true },
+            { MusicSelection.GlassStructureClear, true },
+            { MusicSelection.Hotel, true },
+            { MusicSelection.Infrustration, true },
+            { MusicSelection.IwatodaiDorm, true },
+            { MusicSelection.KiraElevator, true },
+            { MusicSelection.LayerCake, true },
+            { MusicSelection.LeftBankTwo, true },
+            { MusicSelection.LiquidLatin, true },
+            { MusicSelection.LocalForecast, true },
+            { MusicSelection.MallOfTheDead, true },
+            { MusicSelection.MapMuzak, true },
+            { MusicSelection.MikuMikuBongo, true },
+            { MusicSelection.NoMoreWhatIfs, true },
+            { MusicSelection.OnceUponATime, true },
+            { MusicSelection.PiaoZhe, true },
+            { MusicSelection.PleaseHold, true },
+            { MusicSelection.PrettyNiceDayHuh, true },
+            { MusicSelection.SnakeEater, true },
+            { MusicSelection.SpanishWaltz, true },
+            { MusicSelection.TakeCare, true },
+            { MusicSelection.TerrariaUndergroundThemeReal, true },
+            { MusicSelection.TheFireIsGone, true },
+            { MusicSelection.ThrashMachine, true },
+            { MusicSelection.TrophyGallery, true },
+            { MusicSelection.UpgradeStation, true },
+            { MusicSelection.WavedashDotPpt, true },
+            { MusicSelection.WelcomeToBoosterTower, true },
+            { MusicSelection.WhatTheHeck, true },
+            { MusicSelection.WiiShopChannel, true },
+            { MusicSelection.YouAreNowLegallyABird, true }
+        };
+
+
+        [Header("Functionality")]
+
+        [BackgroundColor(170, 110, 230, 1)]
+        [DefaultValue(false)]
+        public bool unHellevator;
+
+        [BackgroundColor(170, 110, 230, 1)]
+        [DefaultValue(true)]
+        public bool snakeEaterOnly;
 
         [BackgroundColor(170, 110, 230, 1)]
         [Range(60, 900)]
@@ -63,10 +122,6 @@ namespace HellevatorMusic.Core
         [Slider]
         [DefaultValue(20)]
         public int IntercomChance;
-
-        [BackgroundColor(170, 110, 230, 1)]
-        [DefaultValue(true)]
-        public bool Jumpscare;
 
 
         [Header("Debug")]

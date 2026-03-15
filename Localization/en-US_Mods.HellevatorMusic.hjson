@@ -6,6 +6,7 @@ Configs: {
 			Main: "[i:4766] Main Config"
 			Extras: "[i:4954] Extras"
 			Debug: "[i:3611] Debug"
+			Functionality: Functionality Header
 		}
 
 		EnableMod: {
@@ -18,45 +19,51 @@ Configs: {
 		}
 
 		RandomSongs: {
-			Label: Toggle Random Songs
+			Label: Toggle Playlist Songs
 			Tooltip:
 				'''
-				For when you want some randomess.
-				Chooses a random song every fall.
-				Will override Music Select if on.
+				Will randomly choose music enabled in the Music Playlist tab.
+				Overrides Single Track Select.
 				'''
 		}
 
 		MusicSelect: {
-			Label: Music Select
+			Label: Single Track Select
+			Tooltip: ""
+		}
+
+		MusicPlaylist: {
+			Label: Music Playlist
 			Tooltip:
 				'''
-				For when you've had enough randomess.
-				Any selection is overriden when "Toggle Random Songs" is on.
-
-				Yes, it's very cluttered. I plan to add a way to form a playlist soon(tm)
-				(1) Local Forecast - Kevin Macleod | (2) Elevator - David O'Brian
-				(3) Garota De Impanema - Antonio Carlos Jobim | (4) Left Bank Two - Wayne Hill
-				(5) "Refreshing Elevator Music" on YT - Chris Rae | (6) Trophy Gallery - Nobuo Uematsu
-				(7) Welcome to Booster Tower - Yoko Shimomura | (8) wavedash.ppt - Lena Raine
-				(9) Hotel - Toby Fox | (10) Infrustration - Neko Tako
-				(11) Layer Cake - Shoji Meguro | (12) Flower Shop - Cazok
-				(13) Elevatorstuck - Clark "Plazmataz" Powell | (14) Mall of the Dead - Daniel Bernstein, Guy Whitmore
-				(15) Wii Shop Channel - Kazumi Totoka | (16) Once Upon A Time - Toby Fox
-				(17) Free Fallin' - Tom Petty | (18) Dream On - Aerosmith
+				NOTE: There is no need to remove or edit the key values as all music that can be present is.
+				Also, do NOT press the trash (clear) button lest you want everything to *poof* (requiring you to Restore Defualts).
 				'''
+		}
+
+		unHellevator: {
+			Label: Un-Hellevator
+			Tooltip:
+				'''
+				Also Typically known as a "Ropevator" or "Flyevator." Makes going up also play music.
+				Ties in with preferences above.
+				'''
+		}
+
+		snakeEaterOnly: {
+			Label: Snake Eater Only
+			Tooltip: Makes Snake Eater play as the only track if Un-Hellevator is enabled.
 		}
 
 		timeBeforePlay: {
 			Label: Time Before Music Plays
 			Tooltip:
 				'''
-				Set the time before music plays.
+				Set the time before music plays. Every in-/decrement is 1 second.
 
-				Every in-/decrement is 1 second.
-				Default is 300 frames (5 seconds).
-				Maximum is 900 frames (15 seconds).
-				Minimum is 60 frames (1 second).
+				Default is 300 ticks (5 seconds).
+				Maximum is 900 ticks (15 seconds).
+				Minimum is 60 ticks (1 second).
 				'''
 		}
 
@@ -108,15 +115,6 @@ Configs: {
 				'''
 		}
 
-		Jumpscare: {
-			Label: Jumpscare
-			Tooltip:
-				'''
-				Boo.
-				(Does nothing... for now.)
-				'''
-		}
-
 		FallTimerToggle: {
 			Label: Fall Timer Toggle
 			Tooltip: Toggles the fallTimer to be logged in chat.
@@ -130,6 +128,215 @@ Configs: {
 		PlayerXToggle: {
 			Label: Player X Toggle
 			Tooltip: Toggles the Player's X velocity to be logged in chat.
+		}
+	}
+
+	MusicSelection: {
+		Tooltip: ""
+
+		YouAreNowLegallyABird: {
+			Tooltip: ""
+			Label: You Are Now Legally A Bird
+		}
+
+		WiiShopChannel: {
+			Tooltip: ""
+			Label: Wii Shop Channel
+		}
+
+		WhatTheHeck: {
+			Tooltip: ""
+			Label: What The Heck
+		}
+
+		WelcomeToBoosterTower: {
+			Tooltip: ""
+			Label: Welcome To Booster Tower
+		}
+
+		WavedashDotPpt: {
+			Tooltip: ""
+			Label: Wavedash Dot Ppt
+		}
+
+		UpgradeStation: {
+			Tooltip: ""
+			Label: Upgrade Station
+		}
+
+		TrophyGallery: {
+			Tooltip: ""
+			Label: Trophy Gallery
+		}
+
+		ThrashMachine: {
+			Tooltip: ""
+			Label: Thrash Machine
+		}
+
+		TheFireIsGone: {
+			Tooltip: ""
+			Label: The Fire Is Gone
+		}
+
+		TerrariaUndergroundThemeReal: {
+			Tooltip: Terraria Underground Theme Real
+			Label: Terraria Underground Theme Real
+		}
+
+		TakeCare: {
+			Tooltip: ""
+			Label: Take Care
+		}
+
+		SpanishWaltz: {
+			Tooltip: ""
+			Label: Spanish Waltz
+		}
+
+		SnakeEater: {
+			Tooltip: ""
+			Label: Snake Eater
+		}
+
+		PrettyNiceDayHuh: {
+			Tooltip: ""
+			Label: Pretty Nice Day Huh...
+		}
+
+		PleaseHold: {
+			Tooltip: ""
+			Label: Please Hold
+		}
+
+		PiaoZhe: {
+			Tooltip: ""
+			Label: Piao Zhe
+		}
+
+		OnceUponATime: {
+			Tooltip: ""
+			Label: Once Upon A Time
+		}
+
+		NoMoreWhatIfs: {
+			Tooltip: ""
+			Label: No More What Ifs
+		}
+
+		MikuMikuBongo: {
+			Tooltip: ""
+			Label: Miku Miku Bongo
+		}
+
+		MapMuzak: {
+			Tooltip: ""
+			Label: Map Muzak
+		}
+
+		MallOfTheDead: {
+			Tooltip: ""
+			Label: Mall Of The Dead
+		}
+
+		LocalForecast: {
+			Label: Local Forecast
+			Tooltip: ""
+		}
+
+		LiquidLatin: {
+			Tooltip: ""
+			Label: Liquid Latin
+		}
+
+		LeftBankTwo: {
+			Label: Left Bank Two
+			Tooltip: ""
+		}
+
+		LayerCake: {
+			Tooltip: ""
+			Label: Layer Cake
+		}
+
+		KiraElevator: {
+			Tooltip: ""
+			Label: Kira Elevator
+		}
+
+		IwatodaiDorm: {
+			Tooltip: ""
+			Label: Iwatodai Dorm
+		}
+
+		Infrustration: {
+			Tooltip: ""
+			Label: Infrustration
+		}
+
+		Hotel: {
+			Tooltip: ""
+			Label: Hotel
+		}
+
+		GlassStructureClear: {
+			Tooltip: ""
+			Label: Glass Structure (Clear)
+		}
+
+		GarotaDeImpanema: {
+			Tooltip: ""
+			Label: Garota De Impanema
+		}
+
+		FridayNight: {
+			Tooltip: ""
+			Label: Friday Night
+		}
+
+		FreeFallin: {
+			Tooltip: ""
+			Label: Free Fallin
+		}
+
+		FreeBird: {
+			Tooltip: ""
+			Label: Free Bird
+		}
+
+		FlowerShop: {
+			Tooltip: ""
+			Label: Flower Shop
+		}
+
+		Elevatorstuck: {
+			Tooltip: ""
+			Label: Elevatorstuck
+		}
+
+		Elevator: {
+			Label: Elevator
+			Tooltip: ""
+		}
+
+		DreamOn: {
+			Tooltip: ""
+			Label: Dream On
+		}
+
+		CanYouReallyCallThisAHotelIDidntReceiveAMintOnMyPillowOrAnything: {
+			Tooltip: Can You Really Call This A Hotel I Didnt Receive A Mint On My Pillow Or Anything
+			Label: Can You Really Call This A Hotel I Didnt Receive A Mint On My Pillow Or Anything
+		}
+
+		AzureMemory: {
+			Tooltip: ""
+			Label: Azure Memory
+		}
+
+		ACupOfLiberTea: {
+			Tooltip: ""
+			Label: A Cup Of Liber Tea
 		}
 	}
 }
